@@ -48,6 +48,17 @@ export const getPrereqList = () => {
         .then(parseJSON);
 };
 
+export const postStudent = (student) => {
+    console.log("student", student);
+    return fetch("/api/student", {
+        ...defaultHeaders,
+        method: "POST",
+        body: JSON.stringify(student),
+    })
+        .then(checkStatus)
+        .then(parseJSON);
+};
+
 export const courseListAtom = atom({
     key: "courseList",
     default: [

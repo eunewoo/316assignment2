@@ -151,6 +151,16 @@ export default function Select() {
         }
 
         setDataVisible(!dataVisible);
+
+        const newStudent = {
+            first_name: inputRef.current.value,
+            last_name: null,
+            password: null,
+        };
+        console.log(newStudent);
+        postStudent(newStudent).then((result) => {
+            console.log("result", result);
+        });
     }
 
     return (
