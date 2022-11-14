@@ -1,0 +1,265 @@
+﻿html {
+    margin-left: 20px;
+
+}
+
+body {
+    color: rgb(50, 50, 50);
+    margin-left: 20px;
+    font-size: 24px;
+    background-image: url("../images/SUNYKorea_AcBldg.jpg");
+    overflow-x: hidden;
+}
+
+#title-word {
+    text-align: center;
+}
+
+#subtitle-word {
+    text-align: left;
+}
+
+#subtitle-word2 {
+    text-align: center;
+}
+
+/*align navbar lists in one line*/
+.flex {
+    display: flex;
+    gap: var(--gap, 1rem);
+}
+
+.navheader {
+    border: none;
+    margin-bottom: 5px;
+
+}
+
+.primary-header {
+    /*pull nav elements to right side*/
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.primary-navigation {
+    /*remove bullets in list*/
+    list-style: none;
+}
+
+.primary-navigation span {
+    /*make some space between number and words in nav elements*/
+    margin-right: 10px;
+}
+
+.primary-navigation li {
+    /*make some space between nav elements*/
+    margin-left: 40px;
+}
+
+.primary-navigation a {
+    color: white;
+    text-decoration: none;
+}
+ 
+@media (min-width: 40em) {
+    /*remove hamburger when size becomes big*/
+    .mobile-nav-toggle {
+        display: none;
+    }
+
+    .primary-header {
+        /*4th constant in rgb is for transparency*/
+        background-color: rgb(244, 244, 244, 0.2);
+
+        /*blur background image*/
+        -webkit-backdrop-filter: brightness(1.1) blur(20px);
+        backdrop-filter: brightness(1.1) blur(20px);
+    }
+}
+
+@media (max-width: 40em) {
+    .primary-navigation {
+        --gap: 2em;
+        position: fixed;
+        z-index: 1000;
+        inset: 0 0 0 30%;
+        /*make nav elements hidden in hamburger*/
+        transform: translateX(100%);
+        /*make nav elements align vertically*/
+        flex-direction: column;
+        padding: min(30vh, 10rem) 2em;
+    }
+
+    /*make nav elements shown when clicked hamburger*/
+    .primary-navigation[data-visible="true"] {
+        transform: translateX(0%);
+
+        /*4th constant in rgb is for transparency*/
+        background-color: rgb(244, 244, 244, 0.2);
+
+        /*blur background image*/
+        -webkit-backdrop-filter: brightness(1.1) blur(20px);
+        backdrop-filter: brightness(1.1) blur(20px);
+    }
+
+    /*designing hamburger icon*/
+    .mobile-nav-toggle {
+        display: block;
+        position: absolute;
+        z-index: 9999;
+        background: url('../images/icon-hamburger.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 3rem;
+        aspect-ratio: 1 ;
+        top: 2rem;
+        right: 2rem;
+        border-radius: 10px;
+    }
+
+    #subNav {
+        display: none;
+    }
+
+    .primary-header {
+        height: 100%;
+    }
+
+    #subtitle-word2 {
+        text-align: left;
+    }
+}
+
+/*This decorates textbox in instructions.html*/
+#inst-text {
+    display: block;
+    background-color: lightblue;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 50px;
+    font-size: 24px;
+    border: 2px solid gray;
+    font-family: "Times New Roman", Times, serif;
+
+}
+
+/*previous.html*/
+
+.checkbox-collects {
+    background-color: rgb(58, 99, 197);
+    position: relative;
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.box, .box input, .box label {
+    display: inline-block;
+}
+
+.input-box-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 850px;
+}
+
+.select-page-input-box-wrapper {
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    max-width: 850px;
+}
+
+.select-checkbox-con {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 1rem;
+
+}
+.checkbox-con {
+    width: 150px;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+#setCourses {
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background-color: #87ceeb;
+}
+
+
+
+/*select.html*/
+
+/*fieldset and legend use for title and border overlap but not working*/
+fieldset {
+    box-sizing: content-box;
+    border: 2px solid darkgrey;
+    padding: 10px;
+    width: 98%;
+    height: 80%;
+}
+
+legend {
+    margin-left: 10px;
+}
+
+#random, #username, #searchFor, #random2 {
+    border-radius: 10px;
+}
+
+#random, #random2 {
+    background-color: #87ceeb;
+}
+
+#username2 {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+}
+
+#username2 p, #searchFor2 p{
+    width: 30%
+}
+
+#username {
+    width: 30%;
+}
+
+#searchFor2 {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+}
+
+#searchFor {
+    width: 30%;
+}
+
+#innerBorder {
+    border: 2px solid blue;
+}
+
+#courseList .alignBox {
+    position: relative;
+    margin-right: 50px;
+}
+
+/*align checkbox and text in one line*/
+.alignBox input, .alignBox label {
+    display: inline-block;
+}
+
