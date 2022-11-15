@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import Home from "./Home";
 import Instructions from "./Instructions";
+import SetStudentId from "./SetStudentId";
 import Previous from "./Previous";
 import Select from "./Select";
 import { courseListAtom, userAtom } from "../model/states";
@@ -45,6 +46,11 @@ export default function RouterPage() {
                 <Routes>
                     <Route exact path="/" element={<Home />} />
                     <Route path="/instructions" element={<Instructions />} />
+                    <Route
+                        path="/SetStudentId"
+                        exact
+                        element={<SetStudentId />}
+                    />
                     <Route path="/previous" exact element={<Previous />} />
                     <Route path="/select" exact element={<Select />} />
                 </Routes>

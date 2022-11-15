@@ -1,5 +1,10 @@
 import { atom } from "recoil";
 
+export const studentIdAtom = atom({
+    key: "studentId",
+    default: -1,
+});
+
 export const userAtom = atom({
     key: "user",
     default: {

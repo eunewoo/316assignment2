@@ -60,6 +60,11 @@ export default function Nav() {
                             </Link>
                         </li>
                         <li>
+                            <Link to="/setStudentId">
+                                <span aria-hidden="true">02</span>Set Student Id
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/previous">
                                 <span aria-hidden="true">02</span>Enter Previous
                                 Courses

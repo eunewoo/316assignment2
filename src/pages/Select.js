@@ -11,6 +11,7 @@ import {
     searchQueryAtom,
     userAtom,
     postStudent,
+    studentIdAtom,
 } from "../model/states";
 import Nav from "../components/Nav";
 
@@ -158,6 +159,7 @@ export default function Select() {
             password: null,
         };
         console.log(newStudent);
+        console.log("studentIdAtom", studentIdAtom);
         postStudent(newStudent).then((result) => {
             console.log("result", result);
         });
