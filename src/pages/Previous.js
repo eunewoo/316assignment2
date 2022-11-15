@@ -2,12 +2,28 @@
 When courses are selected, then they are stored in localSotrage as registered courses
 */
 import React, { useEffect } from "react";
-import { useRecoilValue, useResetRecoilState } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 import CourseCheckboxList from "../components/CourseCheckboxList";
-import { searchQueryAtom, userAtom } from "../model/states";
+import {
+    searchQueryAtom,
+    userAtom,
+    studentIdAtom,
+    courseListAtom,
+} from "../model/states";
 import Nav from "../components/Nav";
 
 export default function Previous() {
+    const studentId = useRecoilValue(studentIdAtom);
+    const [courseList, setCourseList] = useRecoilState(courseListAtom);
+
+    useEffect(() => {
+        //const emptyCourseList = [];
+        if (studentId == -1) {
+            alert("Please set student id before proceeding!");
+            //setCourseList(() => []);
+        }
+    }, []);
+
     const user = useRecoilValue(userAtom);
     const saveData = () => {
         localStorage.setItem("user", JSON.stringify(user));
@@ -20,6 +36,8 @@ export default function Previous() {
             <br></br>
 
             <div className="checkbox-collects">
+                <p>Student ID: {studentId}</p>
+
                 <p>
                     Check off the courses you have completed with a C or better
                 </p>

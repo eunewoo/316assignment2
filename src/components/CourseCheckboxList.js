@@ -8,6 +8,7 @@ import {
     userAtom,
     getCourseList,
     getPrereqList,
+    studentIdAtom,
 } from "../model/states";
 import CourseCheckbox from "./CourseCheckbox";
 
@@ -15,6 +16,7 @@ const CourseCheckboxList = ({ showDetail, current }) => {
     const [user, setUser] = useRecoilState(userAtom);
     const [courseList, setCourseList] = useRecoilState(courseListAtom);
     const searchQuery = useRecoilValue(searchQueryAtom);
+    const studentId = useRecoilValue(studentIdAtom);
 
     useEffect(() => {
         const resultCourseList = [];
@@ -52,7 +54,12 @@ const CourseCheckboxList = ({ showDetail, current }) => {
                 }
             });
             console.log("resultCourseList1", resultCourseList);
-            setCourseList(() => resultCourseList);
+
+            if (studentId != -1) {
+                setCourseList(() => resultCourseList);
+            } else {
+                setCourseList(() => []);
+            }
         });
         //convert db prereq form(a,b) into original prereq type(array)
 
