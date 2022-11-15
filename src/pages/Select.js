@@ -133,10 +133,13 @@ export default function Select() {
     /* When Click Search Courses button:
     deal with name input & showing register button & changing button text betwween "Select Courses" and "Hide" */
     const inputRef = useRef(null);
+    const inputRef2 = useRef(null);
     const [text, setText] = useState("");
     const [changingText, setChangingText] = useState("Search Courses");
     const [dataVisible, setDataVisible] = useState("false");
     const [registerHidden, setRegisterHidden] = useState("hidden");
+
+    const studentId = useRecoilValue(studentIdAtom);
 
     function search2() {
         if (dataVisible) {
@@ -154,12 +157,12 @@ export default function Select() {
         setDataVisible(!dataVisible);
 
         const newStudent = {
+            student_id: studentId,
             first_name: inputRef.current.value,
-            last_name: null,
+            last_name: inputRef2.current.value,
             password: null,
         };
         console.log(newStudent);
-        console.log("studentIdAtom", studentIdAtom);
         postStudent(newStudent).then((result) => {
             console.log("result", result);
         });
@@ -175,12 +178,23 @@ export default function Select() {
                     </legend>
 
                     <div id="username2">
-                        <p>Name:</p>
+                        <p>FirstName:</p>
                         <input
                             id="username"
                             name="name"
                             type="text"
                             ref={inputRef}
+                        />
+                        <p></p>
+                    </div>
+
+                    <div id="username2">
+                        <p>LastName:</p>
+                        <input
+                            id="username"
+                            name="name"
+                            type="text"
+                            ref={inputRef2}
                         />
                         <p></p>
                     </div>
