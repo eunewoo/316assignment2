@@ -11,6 +11,7 @@ import {
     searchQueryAtom,
     userAtom,
     postStudent,
+    postTranscript,
     studentIdAtom,
 } from "../model/states";
 import Nav from "../components/Nav";
@@ -24,13 +25,14 @@ export default function Select() {
     const setSearchQuery = useSetRecoilState(searchQueryAtom);
 
     /**
-     * register function (about db or localstorage)
+     * register function (about db or loca lstorage)
      */
     const register = () => {
         const dbUser = JSON.parse(localStorage.getItem("user"));
         const dbCourseList = JSON.parse(localStorage.getItem("courseList"));
         // for saving
         const finalRegiList = [...dbUser.registering];
+        console.log("finalList", finalRegiList);
         const finalCourseList = [...courseList];
 
         let processed = [];
@@ -113,6 +115,33 @@ export default function Select() {
                 }
             }
         }
+
+        const newStudent = {
+            student_id: studentId,
+            first_name: inputRef.current.value,
+            last_name: inputRef2.current.value,
+            password: null,
+        };
+        console.log(newStudent);
+        postStudent(newStudent).then((result) => {
+            console.log("result", result);
+        });
+
+        // let successRegistering = "";
+
+        // if (user.registering.length > 0) {
+        //     for (let i = 0; i < user.registering.length; i++) {
+        //         successRegistering += user.registering[i];
+        //     }
+        // }
+
+        const newTranscript = {
+            student_id: studentId,
+            course_name: user.registering.join(),
+        };
+        postTranscript(newTranscript).then((result) => {
+            console.log("result", result);
+        });
     };
 
     /**
@@ -155,17 +184,6 @@ export default function Select() {
         }
 
         setDataVisible(!dataVisible);
-
-        const newStudent = {
-            student_id: studentId,
-            first_name: inputRef.current.value,
-            last_name: inputRef2.current.value,
-            password: null,
-        };
-        console.log(newStudent);
-        postStudent(newStudent).then((result) => {
-            console.log("result", result);
-        });
     }
 
     return (

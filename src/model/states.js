@@ -64,6 +64,17 @@ export const postStudent = (student) => {
         .then(parseJSON);
 };
 
+export const postTranscript = (transcript) => {
+    console.log("transcript", transcript);
+    return fetch("/api/transcript", {
+        ...defaultHeaders,
+        method: "POST",
+        body: JSON.stringify(transcript),
+    })
+        .then(checkStatus)
+        .then(parseJSON);
+};
+
 export const courseListAtom = atom({
     key: "courseList",
     default: [
