@@ -1,3 +1,4 @@
+//this file changed from storing courseList data to call data from db
 import { atom } from "recoil";
 
 export const studentIdAtom = atom({

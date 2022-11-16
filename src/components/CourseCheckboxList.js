@@ -18,11 +18,12 @@ const CourseCheckboxList = ({ showDetail, current }) => {
     const searchQuery = useRecoilValue(searchQueryAtom);
     const studentId = useRecoilValue(studentIdAtom);
 
+    //bring db of courses and prereqs
+    //change their form into original courseList form
     useEffect(() => {
         const resultCourseList = [];
         //covert db course form into original course type
         getCourseList().then((list) => {
-            // setCourseList([list]);
             const dbCourseList = list;
 
             for (let i = 0; i < dbCourseList.length; i++) {
@@ -39,7 +40,6 @@ const CourseCheckboxList = ({ showDetail, current }) => {
                 resultCourseList.push(UpdateCourse);
             }
             getPrereqList().then((list2) => {
-                // setCourseList([list]);
                 const dbPrereqList = list2;
                 for (let i = 0; i < dbPrereqList.length; i++) {
                     const dbPrereq = dbPrereqList[i];
@@ -53,7 +53,7 @@ const CourseCheckboxList = ({ showDetail, current }) => {
                     );
                 }
             });
-            console.log("resultCourseList1", resultCourseList);
+            //console.log("resultCourseList1", resultCourseList);
 
             var delayInMilliseconds = 100; //1 second
 
