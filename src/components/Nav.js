@@ -66,13 +66,13 @@ export default function Nav() {
                         </li>
                         <li>
                             <Link to="/previous">
-                                <span aria-hidden="true">02</span>Enter Previous
+                                <span aria-hidden="true">03</span>Enter Previous
                                 Courses
                             </Link>
                         </li>
                         <li>
                             <Link to="/select">
-                                <span aria-hidden="true">03</span>Select Courses
+                                <span aria-hidden="true">04</span>Select Courses
                             </Link>
                         </li>
                     </ul>

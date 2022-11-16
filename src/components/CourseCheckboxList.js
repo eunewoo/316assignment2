@@ -55,18 +55,17 @@ const CourseCheckboxList = ({ showDetail, current }) => {
             });
             console.log("resultCourseList1", resultCourseList);
 
-            if (studentId != -1) {
-                setCourseList(() => resultCourseList);
-            } else {
-                setCourseList(() => []);
-            }
-        });
-        //convert db prereq form(a,b) into original prereq type(array)
+            var delayInMilliseconds = 100; //1 second
 
-        console.log("resultCourseList2", resultCourseList);
-        // setCourseList(resultCourseList);
-        // console.log("courselist", courseList);
-        //setCourseList(() => resultCourseList);
+            //set tiem delay for resultCourseList is formed and then set into original courseList
+            setTimeout(function () {
+                if (studentId != -1) {
+                    setCourseList(() => resultCourseList);
+                } else {
+                    setCourseList(() => []);
+                }
+            }, delayInMilliseconds);
+        });
     }, []);
 
     const handleCheckboxChange = (id) => {
