@@ -6,6 +6,11 @@ export const studentIdAtom = atom({
     default: -1,
 });
 
+export const studentPwAtom = atom({
+    key: "studentPw",
+    default: 0,
+});
+
 export const userAtom = atom({
     key: "user",
     default: {
@@ -48,6 +53,14 @@ export const getCourseList = () => {
 
 export const getPrereqList = () => {
     return fetch("/api/courseman/prereqs", {
+        ...defaultHeaders,
+    })
+        .then(checkStatus)
+        .then(parseJSON);
+};
+
+export const getStudentList = () => {
+    return fetch("/api/courseman/students", {
         ...defaultHeaders,
     })
         .then(checkStatus)

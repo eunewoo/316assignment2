@@ -2,14 +2,19 @@ import React, { useRef } from "react";
 import { atom } from "recoil";
 import { useRecoilState } from "recoil";
 import Nav from "../components/Nav";
-import { studentIdAtom } from "../model/states";
+import { studentIdAtom, studentPwAtom } from "../model/states";
 
 export default function SetStudentId() {
-    const inputRef2 = useRef(null);
+    const inputRef3 = useRef(null);
+    const inputRef4 = useRef(null);
     const [studentId, setStudentId] = useRecoilState(studentIdAtom);
 
     function search3() {
-        setStudentId(() => inputRef2.current.value);
+        setStudentId(() => inputRef3.current.value);
+    }
+
+    function search4() {
+        setStudentId(() => inputRef4.current.value);
     }
 
     return (
@@ -17,14 +22,24 @@ export default function SetStudentId() {
             <h1 id="title-word">CourseMan</h1>
             <Nav />
             <div className="checkbox-collects ">
-                <p id="title-word">ID Entry Form</p>
+                <p id="title-word">Login Form</p>
                 <div id="username2">
                     <p>ID:</p>
                     <input
                         id="username"
                         name="name"
                         type="text"
-                        ref={inputRef2}
+                        ref={inputRef3}
+                    />
+                    <p></p>
+                </div>
+                <div id="username2">
+                    <p>Password:</p>
+                    <input
+                        id="username"
+                        name="password"
+                        type="text"
+                        ref={inputRef4}
                     />
                     <p></p>
                 </div>

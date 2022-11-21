@@ -232,7 +232,9 @@ legend {
 }
 
 #username2 p, #searchFor2 p{
-    width: 30%
+    width: 40%;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 #username {

@@ -9,6 +9,7 @@ import {
     getCourseList,
     getPrereqList,
     studentIdAtom,
+    getStudentList,
 } from "../model/states";
 import CourseCheckbox from "./CourseCheckbox";
 
@@ -65,6 +66,10 @@ const CourseCheckboxList = ({ showDetail, current }) => {
                     setCourseList(() => []);
                 }
             }, delayInMilliseconds);
+        });
+        getStudentList().then((list3) => {
+            const dbStudentList = list3;
+            console.log("StudentList", dbStudentList);
         });
     }, []);
 
