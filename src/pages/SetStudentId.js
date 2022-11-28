@@ -3,7 +3,7 @@ import { atom } from "recoil";
 import { useRecoilState } from "recoil";
 import Nav from "../components/Nav";
 import { studentIdAtom, studentPwAtom, getStudentList } from "../model/states";
-//import { hashutil } from "../hashutil.mjs";
+import { hashutil } from "../hashutil.mjs";
 
 export default function SetStudentId() {
     const inputRef3 = useRef(null);
@@ -21,10 +21,30 @@ export default function SetStudentId() {
     function search4() {
         const newInputId = inputRef3.current.value;
         //password: inputRef4.current.value,
+        const newInputPw = inputRef4.current.value;
 
         getStudentList(newInputId).then((list3) => {
             const dbStudentList = list3;
             console.log("StudentRecord", dbStudentList);
+
+            const inputHashPw = hashutil(
+                dbStudentList.first_name,
+                dbStudentList.last_name,
+                newInputPw
+            );
+
+            //set timeout to have enough time to get from db
+            const delayInMilliseconds = 100;
+
+            setTimeout(function () {
+                if (dbStudentList.length == 0) {
+                    alert("Login failed: invalid credentials");
+                } else if (inputHashPw == dbStudentList.password) {
+                    alert(`Logged in: ${newInputId}`);
+                } else {
+                    alert("Login failed: Wrong password");
+                }
+            }, delayInMilliseconds);
         });
     }
 
