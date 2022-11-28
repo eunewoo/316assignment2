@@ -27,22 +27,24 @@ export default function SetStudentId() {
             const dbStudentList = list3;
             console.log("StudentRecord", dbStudentList);
 
-            const inputHashPw = hashutil(
-                dbStudentList.first_name,
-                dbStudentList.last_name,
-                newInputPw
-            );
-
+            //console.log("inputHash", inputHashPw);
             //set timeout to have enough time to get from db
             const delayInMilliseconds = 100;
 
             setTimeout(function () {
                 if (dbStudentList.length == 0) {
                     alert("Login failed: invalid credentials");
-                } else if (inputHashPw == dbStudentList.password) {
-                    alert(`Logged in: ${newInputId}`);
                 } else {
-                    alert("Login failed: Wrong password");
+                    const inputHashPw = hashutil(
+                        dbStudentList[0].first_name,
+                        dbStudentList[0].last_name,
+                        newInputPw
+                    );
+                    if (inputHashPw == dbStudentList[0].password) {
+                        alert(`Logged in: ${newInputId}`);
+                    } else {
+                        alert("Login failed: Wrong password");
+                    }
                 }
             }, delayInMilliseconds);
         });
