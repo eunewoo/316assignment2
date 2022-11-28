@@ -34,6 +34,7 @@ export default function Select() {
         const finalRegiList = [...dbUser.registering];
         console.log("finalList", finalRegiList);
         const finalCourseList = [...courseList];
+        let transcriptCombine = "";
 
         let processed = [];
 
@@ -62,6 +63,7 @@ export default function Select() {
                 });
             } else if (dbUser.registering.includes(id)) {
                 // already registered for this seme?
+                transcriptCombine += id;
                 processed.push({
                     id,
                     msg: `Courses Succesfully Registered: ${id}`,
@@ -85,6 +87,7 @@ export default function Select() {
                         courseIdx: i,
                     });
                 } else {
+                    transcriptCombine += id;
                     processed.push({
                         id,
                         msg: `Courses Succesfully Registered: ${id}`,
@@ -114,6 +117,15 @@ export default function Select() {
                     alert(msg);
                 }
             }
+            if (k == processed.length - 1) {
+                const newTranscript = {
+                    student_id: studentId,
+                    course_name: transcriptCombine,
+                };
+                postTranscript(newTranscript).then((result) => {
+                    console.log("result", result);
+                });
+            }
         }
 
         const newStudent = {
@@ -134,14 +146,6 @@ export default function Select() {
         //         successRegistering += user.registering[i];
         //     }
         // }
-
-        const newTranscript = {
-            student_id: studentId,
-            course_name: user.registering.join(),
-        };
-        postTranscript(newTranscript).then((result) => {
-            console.log("result", result);
-        });
     };
 
     /**

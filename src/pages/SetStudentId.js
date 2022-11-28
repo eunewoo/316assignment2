@@ -2,20 +2,42 @@ import React, { useRef } from "react";
 import { atom } from "recoil";
 import { useRecoilState } from "recoil";
 import Nav from "../components/Nav";
-import { studentIdAtom, studentPwAtom } from "../model/states";
+import { studentIdAtom, studentPwAtom, getStudentList } from "../model/states";
+//import { hashutil } from "../hashutil.mjs";
 
 export default function SetStudentId() {
     const inputRef3 = useRef(null);
     const inputRef4 = useRef(null);
     const [studentId, setStudentId] = useRecoilState(studentIdAtom);
+    const [studentPw, setStudentPw] = useRecoilState(studentPwAtom);
 
     function search3() {
         setStudentId(() => inputRef3.current.value);
+
+        setStudentPw(() => inputRef4.current.value);
     }
 
+    //untillnow
     function search4() {
-        setStudentId(() => inputRef4.current.value);
+        const newInputId = inputRef3.current.value;
+        //password: inputRef4.current.value,
+
+        getStudentList(newInputId).then((list3) => {
+            const dbStudentList = list3;
+            console.log("StudentRecord", dbStudentList);
+        });
     }
+
+    // const newStudent = {
+    //     student_id: studentId,
+    //     first_name: inputRef.current.value,
+    //     last_name: inputRef2.current.value,
+    //     password: null,
+    // };
+    // console.log(newStudent);
+    // postStudent(newStudent).then((result) => {
+    //     console.log("result", result);
+    // });
 
     return (
         <>
@@ -47,6 +69,7 @@ export default function SetStudentId() {
                     id="setCourses"
                     onClick={() => {
                         search3();
+                        search4();
                     }}
                 >
                     Set Student Id

@@ -59,9 +59,11 @@ export const getPrereqList = () => {
         .then(parseJSON);
 };
 
-export const getStudentList = () => {
-    return fetch("/api/courseman/students", {
+export const getStudentList = (inputId) => {
+    return fetch(`/api/courseman/students/${inputId}`, {
         ...defaultHeaders,
+        //method: "GET",
+        //body: JSON.stringify(inputId),
     })
         .then(checkStatus)
         .then(parseJSON);

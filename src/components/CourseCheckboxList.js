@@ -67,6 +67,8 @@ const CourseCheckboxList = ({ showDetail, current }) => {
                 }
             }, delayInMilliseconds);
         });
+
+        //set to check getStudent from db working
         getStudentList().then((list3) => {
             const dbStudentList = list3;
             console.log("StudentList", dbStudentList);

@@ -11,7 +11,8 @@ export default function Instructions() {
 
             <p id="inst-text">
                 First, proceed to 'Set Student Id' and enter your 9 digit
-                studnet id. Click the Set Student Id button to save it.
+                studnet id and your password. Click the 'Login' button to verify
+                your password and save your student id for the session
                 <br></br>
                 <br></br>
                 Next, proceed to 'Enter Previous Courses.' Click on each course
@@ -23,7 +24,7 @@ export default function Instructions() {
                 provided string in the course name. This can be left blank to
                 see all CSE courses.<br></br>
                 <br></br>
-                Clikc the checkbox by each course for which you would like to
+                Click the checkbox by each course for which you would like to
                 register. Click the Register button to register. If you are
                 missing prerequisites, you must go back and select a different
                 set of courses. In this case, click 'ok' on the alert box and
