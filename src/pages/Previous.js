@@ -2,7 +2,7 @@
 When courses are selected, then they are stored in localSotrage as registered courses
 */
 import React, { useEffect } from "react";
-import { useRecoilValue, useRecoilState } from "recoil";
+import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
 import CourseCheckboxList from "../components/CourseCheckboxList";
 import {
     searchQueryAtom,
@@ -15,6 +15,9 @@ import Nav from "../components/Nav";
 export default function Previous() {
     const studentId = useRecoilValue(studentIdAtom);
     const [courseList, setCourseList] = useRecoilState(courseListAtom);
+    const setSearchQuery = useSetRecoilState(searchQueryAtom);
+
+    setSearchQuery(() => "");
 
     useEffect(() => {
         //const emptyCourseList = [];
