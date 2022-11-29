@@ -11,14 +11,15 @@ export default function SetStudentId() {
     const [studentId, setStudentId] = useRecoilState(studentIdAtom);
     const [studentPw, setStudentPw] = useRecoilState(studentPwAtom);
 
+    //Reset studentId to -1 if not login successfully
     function search3() {
-        setStudentId(() => inputRef3.current.value);
-
-        setStudentPw(() => inputRef4.current.value);
+        setStudentId(() => -1);
     }
 
     //untillnow
     function search4() {
+        localStorage.clear();
+
         const newInputId = inputRef3.current.value;
         //password: inputRef4.current.value,
         const newInputPw = inputRef4.current.value;
@@ -42,6 +43,7 @@ export default function SetStudentId() {
                     );
                     if (inputHashPw == dbStudentList[0].password) {
                         alert(`Logged in: ${newInputId}`);
+                        setStudentId(() => inputRef3.current.value);
                     } else {
                         alert("Login failed: Wrong password");
                     }
