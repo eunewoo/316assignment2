@@ -19,7 +19,7 @@ export default function Previous() {
     useEffect(() => {
         //const emptyCourseList = [];
         if (studentId == -1) {
-            alert("Please set student id before proceeding!");
+            alert("Please set CORRECT student id before proceeding!");
             //setCourseList(() => []);
         }
     }, []);

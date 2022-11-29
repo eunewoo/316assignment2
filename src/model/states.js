@@ -11,6 +11,11 @@ export const studentPwAtom = atom({
     default: 0,
 });
 
+export const studentNameAtom = atom({
+    key: "studentName",
+    default: "",
+});
+
 export const userAtom = atom({
     key: "user",
     default: {

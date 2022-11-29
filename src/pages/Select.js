@@ -13,6 +13,7 @@ import {
     postStudent,
     postTranscript,
     studentIdAtom,
+    studentNameAtom,
 } from "../model/states";
 import Nav from "../components/Nav";
 
@@ -173,12 +174,11 @@ export default function Select() {
     const [registerHidden, setRegisterHidden] = useState("hidden");
 
     const studentId = useRecoilValue(studentIdAtom);
+    const studentName = useRecoilValue(studentNameAtom);
 
     function search2() {
         if (dataVisible) {
-            setText(
-                inputRef.current.value + " here are the courses you may select."
-            );
+            setText(studentName + " here are the courses you may select.");
             setChangingText("Hide");
             setRegisterHidden("");
         } else {
@@ -205,6 +205,7 @@ export default function Select() {
                             id="username"
                             name="name"
                             type="text"
+                            placeholder="Already fixed from DB"
                             ref={inputRef}
                         />
                         <p></p>
@@ -216,6 +217,7 @@ export default function Select() {
                             id="username"
                             name="name"
                             type="text"
+                            placeholder="Already fixed from DB"
                             ref={inputRef2}
                         />
                         <p></p>

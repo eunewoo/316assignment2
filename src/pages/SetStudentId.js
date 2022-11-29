@@ -2,13 +2,19 @@ import React, { useRef } from "react";
 import { atom } from "recoil";
 import { useRecoilState } from "recoil";
 import Nav from "../components/Nav";
-import { studentIdAtom, studentPwAtom, getStudentList } from "../model/states";
+import {
+    studentIdAtom,
+    studentPwAtom,
+    studentNameAtom,
+    getStudentList,
+} from "../model/states";
 import { hashutil } from "../hashutil.mjs";
 
 export default function SetStudentId() {
     const inputRef3 = useRef(null);
     const inputRef4 = useRef(null);
     const [studentId, setStudentId] = useRecoilState(studentIdAtom);
+    const [studentName, setStudentName] = useRecoilState(studentNameAtom);
     const [studentPw, setStudentPw] = useRecoilState(studentPwAtom);
 
     //Reset studentId to -1 if not login successfully
@@ -41,9 +47,14 @@ export default function SetStudentId() {
                         dbStudentList[0].last_name,
                         newInputPw
                     );
+                    const Fullname =
+                        dbStudentList[0].first_name +
+                        dbStudentList[0].last_name;
                     if (inputHashPw == dbStudentList[0].password) {
                         alert(`Logged in: ${newInputId}`);
                         setStudentId(() => inputRef3.current.value);
+                        //setStudentName to use in Select courses
+                        setStudentName(() => Fullname);
                     } else {
                         alert("Login failed: Wrong password");
                     }
